@@ -1,0 +1,8 @@
+{
+  "C_Cpp.default.compileCommands": "${workspaceFolder}/compile_commands.json",
+  "files.associations": {
+    "*.groovy": "jenkinsfile",
+    "stat.h": "c",
+    "fs.h": "c"
+  }
+}

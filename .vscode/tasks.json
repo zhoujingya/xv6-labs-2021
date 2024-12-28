@@ -4,25 +4,40 @@
     {
       "label": "Xv6-build",
       "type": "shell",
+      "command": "make",
+      "args": ["kernel/kernel"],
+      "group": "build"
+    },
+    {
+      "label": "Xv6-qemu-gdb",
+      "type": "shell",
+      "command": "make",
+      "args": ["CPUS=1", "qemu-gdb"],
       "isBackground": true,
-      "command": "make CPUS=1 qemu-gdb",
-      "promptOnClose": false,
-      "problemMatcher": [
-        {
-          "pattern": [
-            {
-              "regexp": ".",
-              "file": 1,
-              "location": 2,
-              "message": 3
-            }
-          ],
-          "background": {
-            "beginsPattern": ".*Now run 'gdb' in another window.",
-            "endsPattern": "."
-          }
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^$",
+          "file": 1,
+          "location": 2,
+          "message": 3
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^qemu-system-riscv64",
+          "endsPattern": "^qemu-system-riscv64"
         }
-      ]
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "close": false,
+        "focus": false
+      },
+      "options": {
+        "env": {
+          "QEMU_PRELAUNCH_TIMEOUT": "30"
+        }
+      }
     }
   ]
 }

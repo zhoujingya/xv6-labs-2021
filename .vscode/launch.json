@@ -1,14 +1,34 @@
-// xv6-riscv/.vscode/launch.json
 {
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
-      {
-          "name": "xv6debug",
-          "type": "lldb",
-          "request": "launch",
-          "program": "${workspaceFolder}/kernel/kernel",
-          "cwd": "${workspaceFolder}",
-          "preLaunchTask": "xv6build"
-      }
+    {
+      "name": "Xv6-debug-kernel",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/user/_sleep",
+      "args": [],
+      "stopAtEntry": true,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "osx": {
+        "miDebuggerPath": "/opt/homebrew/opt/riscv64-elf-gdb/bin/riscv64-elf-gdb"
+      },
+      "linux": {
+        "miDebuggerPath": "/opt/riscv/bin/riscv64-unknown-linux-gnu-gdb"
+      },
+      "MIMode": "gdb",
+      "preLaunchTask": "Xv6-qemu-gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
   ]
 }
